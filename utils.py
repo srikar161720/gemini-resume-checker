@@ -1,4 +1,5 @@
 # utils.py
+# Contians a function to extract text from .txt and .pdf files
 
 import streamlit as st
 import fitz  # PyMuPDF
