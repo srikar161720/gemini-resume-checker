@@ -3,6 +3,9 @@
 venv/
 .venv/
 
+# Test
+test/
+
 # Python cache
 __pycache__/
 *.pyc
