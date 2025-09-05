@@ -1,4 +1,5 @@
 # app.py
+# Contains the main functionality of the AI Agent
 
 import os
 import streamlit as st
@@ -64,7 +65,7 @@ prompt_template = PromptTemplate(
     template=prompt_template_string
 )
 
-# Instantiate the Gemini 1.5 Pro model
+# Instantiate the Gemini 2.5 Flash model
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
 
 # --- LANGCHAIN CHAIN ---
