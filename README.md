@@ -4,7 +4,7 @@
 
 An AI-powered agent that analyzes your resume against a job description to provide a detailed match report, helping you tailor your application and land more interviews.
 
-This application uses Google's Gemini 2.5 Pro model via LangChain to act as an expert career coach. It parses your resume, compares it to a job's requirements, and generates a report with a match score, keyword analysis, and actionable suggestions for improvement.
+This application uses Google's Gemini 2.5 Flash model via LangChain to act as an expert career coach. It parses your resume, compares it to a job's requirements, and generates a report with a match score, keyword analysis, and actionable suggestions for improvement.
 
 ---
 
