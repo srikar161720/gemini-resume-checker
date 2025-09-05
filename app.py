@@ -38,22 +38,22 @@ Analyze the following resume and job description. Provide your analysis in the s
 
 **Required Output Format (Strictly follow this Markdown structure):**
 
-## Match Score: [Provide a percentage]%
+### Match Score: [Provide a percentage]%
 
-## Analysis:
+### Analysis:
 [Provide a 2-3 sentence expert summary of the candidate's fit for the role, highlighting key strengths and weaknesses.]
 
-## Matched Keywords & Strengths:
+### Matched Keywords & Strengths:
 - [List the key skills and experiences from the resume that align perfectly with the job description.]
 - [Another matched keyword or strength.]
 - [...]
 
-## Missing Keywords & Gaps:
+### Missing Keywords & Gaps:
 - [List the crucial keywords and qualifications from the job description that are missing or not emphasized in the resume.]
 - [Another missing keyword or gap.]
 - [...]
 
-## Actionable Suggestions:
+### Actionable Suggestions:
 1. **[Suggestion 1]:** [Provide a specific, actionable recommendation. For example: "Incorporate the keyword 'Agile Methodologies' into your project descriptions to better align with the job's requirements."]
 2. **[Suggestion 2]:** [Another specific recommendation.]
 3. **[Suggestion 3]:** [...]
@@ -73,9 +73,9 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.3)
 chain = prompt_template | llm | StrOutputParser()
 
 # --- STREAMLIT UI ---
-st.set_page_config(page_title="Gemini Resume Matcher", page_icon=":male-technologist:")
+st.set_page_config(page_title="Resume Matcher", page_icon=":male-technologist:")
 
-st.title("👔 Gemini Resume Matcher")
+st.title("👔 Resume Matcher")
 st.markdown("""
 Welcome! This tool helps you optimize your resume for a specific job by analyzing it against the job description. 
 Simply upload your resume, paste the job description, and let the AI provide you with a detailed analysis and match report.
@@ -97,8 +97,8 @@ with col2:
 # Submit button centered
 submit_button = st.button("Analyze My Application", type="primary", use_container_width=True)
 
+st.divider()
 
-# --- LOGIC TO RUN ON SUBMIT ---
 # --- LOGIC TO RUN ON SUBMIT ---
 if submit_button:
     # 1. Validate inputs
@@ -107,7 +107,7 @@ if submit_button:
         st.stop()
 
     # 2. Show a spinner and process the inputs
-    with st.spinner("Gemini is analyzing your application... 📄✨"):
+    with st.spinner("The AI is analyzing your application... 📄✨"):
         try:
             # Extract text from the uploaded resume
             resume_text = get_file_text(resume_file)
@@ -124,8 +124,10 @@ if submit_button:
             })
 
             # 4. Display the results
-            st.subheader("📊 Your Analysis Report")
+            st.header("📊 Your Analysis Report")
             st.markdown(response)
 
         except Exception as e:
             st.error(f"An error occurred during analysis: {e}")
+
+    st.divider()
