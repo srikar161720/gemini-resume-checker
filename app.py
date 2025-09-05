@@ -99,7 +99,33 @@ submit_button = st.button("Analyze My Application", type="primary", use_containe
 
 
 # --- LOGIC TO RUN ON SUBMIT ---
-# This part is currently empty and will be filled in the next task.
+# --- LOGIC TO RUN ON SUBMIT ---
 if submit_button:
-    st.info("The 'Analyze' button was clicked! The logic to process the inputs will be added in the final step.")
-    # The integration logic will go here.
+    # 1. Validate inputs
+    if not resume_file or not job_description:
+        st.error("⚠️ Please upload your resume and paste the job description.")
+        st.stop()
+
+    # 2. Show a spinner and process the inputs
+    with st.spinner("Gemini is analyzing your application... 📄✨"):
+        try:
+            # Extract text from the uploaded resume
+            resume_text = get_file_text(resume_file)
+
+            # Check if text extraction was successful
+            if resume_text is None:
+                # The error is already handled in get_file_text, so we just stop
+                st.stop()
+
+            # 3. Invoke the LangChain chain with the inputs
+            response = chain.invoke({
+                "resume_text": resume_text,
+                "job_description": job_description
+            })
+
+            # 4. Display the results
+            st.subheader("📊 Your Analysis Report")
+            st.markdown(response)
+
+        except Exception as e:
+            st.error(f"An error occurred during analysis: {e}")
